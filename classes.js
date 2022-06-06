@@ -207,7 +207,7 @@ class Fire extends Grass {
 
 class Water extends Grass {
     constructor(x, y) {
-        super(x, y)
+        super(x, y);
         this.mulInterval = 0;
         super.directions;
     }
