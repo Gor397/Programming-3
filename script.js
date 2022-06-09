@@ -1,3 +1,32 @@
+let express = require("express");
+let app = express();
+
+app.get("/", function (req, res) {
+    res.send("facebook");
+});
+
+app.get("/*", function (req, res) {
+    res.send("Eror 404");
+});
+
+app.get("/name/:name", function(req, res){
+    var name = req.params.name;
+    res.send(name);
+ });
+
+app.listen(3000, function () {
+    console.log("Example is running on port 3000");
+});
+
+app.get("/google/", function (req, res) {
+    res.redirect('http://google.com');
+});
+
+app.get("/google/:search", function(req, res){
+    var name = req.params.search;
+    res.redirect('https://google.com/search?q='+name);
+ });
+
 let matrix = [];
 
 let side = 30;
@@ -12,29 +41,29 @@ function setup() {
             let temp = [];
             for (let k = 0; k < x; k++) {
                 let a = round(random([1, 0, 1, 0, 1, 0, 2, 0, 3, 0, 0, 1, 4, 0]))
-                if (a == 1 && q1 == 0){
+                if (a == 1 && q1 == 0) {
                     a = 0;
                 }
-                else if(a == 2 && q2 == 0){
+                else if (a == 2 && q2 == 0) {
                     a = 0;
                 }
-                else if(a == 3 && q3 == 0){
+                else if (a == 3 && q3 == 0) {
                     a = 0;
                 }
-                else if(a == 4 && q4 == 0){
+                else if (a == 4 && q4 == 0) {
                     a = 0;
                 }
 
-                if (a == 1){
+                if (a == 1) {
                     q1--;
                 }
-                else if (a == 2){
+                else if (a == 2) {
                     q2--;
                 }
-                else if (a == 3){
+                else if (a == 3) {
                     q3--;
                 }
-                else if (a == 4){
+                else if (a == 4) {
                     q4--;
                 }
                 temp.push(a)
@@ -77,19 +106,19 @@ function draw() {
             else if (matrix[y][x] == 0) {
                 fill("#f5c242")
             }
-            else if (matrix[y][x] == 2){
+            else if (matrix[y][x] == 2) {
                 textSize(side);
                 text('🐫', side * x, side * y)
             }
-            else if (matrix[y][x] == 3){
+            else if (matrix[y][x] == 3) {
                 textSize(side);
                 text('🔥', side * x, side * y)
             }
-            else if (matrix[y][x] == 4){
+            else if (matrix[y][x] == 4) {
                 textSize(side);
                 text('🌊', side * x, side * y)
             }
-            else if (matrix[y][x] == 5){
+            else if (matrix[y][x] == 5) {
                 textSize(side);
                 text('🏜', side * x, side * y)
             }
@@ -97,22 +126,22 @@ function draw() {
         }
     }
 
-    for(let x in grassArr){
+    for (let x in grassArr) {
         grassArr[x].mul();
     }
 
-    for(let x in grassEaterArr){
+    for (let x in grassEaterArr) {
         grassEaterArr[x].eat();
     }
 
-    for(let x in fireArr){
+    for (let x in fireArr) {
         fireArr[x].mul();
     }
 
-    for(let x in waterArr){
+    for (let x in waterArr) {
         waterArr[x].mul();
     }
-    
+
     let end = 0;
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
