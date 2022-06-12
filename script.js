@@ -1,32 +1,3 @@
-let express = require("express");
-let app = express();
-
-app.get("/", function (req, res) {
-    res.send("facebook");
-});
-
-app.get("/*", function (req, res) {
-    res.send("Eror 404");
-});
-
-app.get("/name/:name", function(req, res){
-    var name = req.params.name;
-    res.send(name);
- });
-
-app.listen(3000, function () {
-    console.log("Example is running on port 3000");
-});
-
-app.get("/google/", function (req, res) {
-    res.redirect('http://google.com');
-});
-
-app.get("/google/:search", function(req, res){
-    var name = req.params.search;
-    res.redirect('https://google.com/search?q='+name);
- });
-
 let matrix = [];
 
 let side = 30;
